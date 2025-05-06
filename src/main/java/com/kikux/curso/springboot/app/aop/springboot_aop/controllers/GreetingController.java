@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.kikux.curso.springboot.app.aop.springboot_aop.services.GreetingService;
 
 @RestController
-public class GreteeingController {
+public class GreetingController {
 
     @Autowired
     private GreetingService greetingService;
@@ -18,5 +18,9 @@ public class GreteeingController {
     @GetMapping("/greeting")
     public ResponseEntity<?> greeting() {
         return ResponseEntity.ok(Collections.singletonMap("greeting", greetingService.sayHello("Pepo", "Hola, qué tal")));
+    }
+    @GetMapping("/greetingError")
+    public ResponseEntity<?> greetingError() {
+        return ResponseEntity.ok(Collections.singletonMap("greeting", greetingService.sayHelloError("Pepo", "Hola, qué tal")));
     }
 }
